@@ -272,6 +272,35 @@ namespace Host.Configuration
                         IdentityServerConstants.StandardScopes.Email,
                         "api1", "api2.read_only", "api2.full_access"
                     }
+                },
+
+                new Client
+                {
+                    ClientId = "drupal",
+                    ClientName = "Drupal client",
+                    ClientUri = "http://192.168.99.100:8080",
+                    //LogoUri = "https://pbs.twimg.com/profile_images/1612989113/Ki-hanja_400x400.png",
+
+                    ClientSecrets = 
+                    {
+                        new Secret("secret".Sha256())
+                    },
+                    
+                    AllowedGrantTypes = GrantTypes.Code,
+                    AllowAccessTokensViaBrowser = true,
+                    AccessTokenType = AccessTokenType.Jwt,
+
+                    RedirectUris = { "http://192.168.99.100:8080/openid-connect/generic" },
+                    PostLogoutRedirectUris = { "http://192.168.99.100:8080" },
+
+                    AllowOfflineAccess = true,
+
+                    AllowedScopes = 
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email
+                    }
                 }
             };
         }

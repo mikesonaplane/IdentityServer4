@@ -21,8 +21,8 @@ namespace Host
                 //    options.ListenerSettings.Authentication.AllowAnonymous = true;
                 //})
                 .UseKestrel()
+                .UseUrls("http://0.0.0.0:5000")
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
 
